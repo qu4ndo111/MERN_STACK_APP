@@ -6,6 +6,7 @@ import decode from 'jwt-decode';
 
 import useStyles from './styles';
 import memories from '../../images/logo.jpg';
+import text from '../../images/text.png';
 
 const Navbar = () => {
     const classes = useStyles();
@@ -35,17 +36,19 @@ const Navbar = () => {
 
     return (
         <AppBar position='static' color='inherit' className={classes.appBar}>
-            <div className={classes.brandContainer}>
-                <Typography component={Link} to='/' className={classes.heading} variant='h2' align='center'>
-                    QuanAMemories
-                </Typography>
+            <Link className={classes.brandContainer} to={'/'}>
+                <img 
+                    alt='icon'
+                    height='45'
+                    src={text} 
+                />
                 <img
                     className={classes.image}
                     src={memories}
                     alt='QuanAMemories'
-                    height='60'
+                    height='40'
                 />
-            </div>
+            </Link>
             <Toolbar className={classes.toolbar}>
                 {user ? (
                     <div className={classes.profile}>

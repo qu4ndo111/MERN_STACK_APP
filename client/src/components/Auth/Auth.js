@@ -4,6 +4,7 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import jwt_decode from 'jwt-decode';
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
+import { GoogleLogin } from '@react-oauth/google';
 
 import useStyles from './styles';
 import Input from './Input';
@@ -24,26 +25,6 @@ const Auth = () => {
     const classes = useStyles();
     const dispatch = useDispatch();
     const history = useHistory();
-    const client = window.google.accounts.oauth2.initTokenClient({
-        client_id: process.env.REACT_APP_GOOGLE_CLIENT_ID,
-        scope: 'https://www.googleapis.com/auth/calendar.readonly',
-        callback: (response) => {
-            return response
-        },
-    });
-    useEffect(() => {
-        const google = window.google;
-        google.accounts.id.initialize({
-            client_id: process.env.REACT_APP_GOOGLE_CLIENT_ID,
-            callback: responseGoogle
-        });
-
-        google.accounts.id.renderButton(
-            document.getElementById('googleLogin'),
-            { theme: 'outlined', size: 'large' }
-        )
-    }, [0])
-
 
     const handleShowPassword = () => setShowPassword((prev) => !prev)
 
@@ -66,7 +47,6 @@ const Auth = () => {
     };
 
     const responseGoogle = async (res) => {
-        // client.requestAccessToken();
         const result = jwt_decode(res.credential);
         try {
             dispatch({ type: 'AUTH', data: { result, token: res.credential } });
@@ -104,9 +84,10 @@ const Auth = () => {
                         {isSignUp ? 'Sign Up' : 'Sign In'}
                     </Button>
                     <Container className={classes.googleButton}>
-                        <div id='googleLogin'>
-
-                        </div>
+                        <GoogleLogin 
+                            onSuccess={responseGoogle}
+                            onFailure={responseGoogle}
+                        />
                     </Container>
                     <Grid container justifyContent='flex-end' >
                         <Grid item>

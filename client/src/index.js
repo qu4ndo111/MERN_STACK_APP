@@ -1,7 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
-import { applyMiddleware, compose } from 'redux';
 import { configureStore } from '@reduxjs/toolkit';
 import { GoogleOAuthProvider } from '@react-oauth/google';
 

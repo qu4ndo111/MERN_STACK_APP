@@ -53,6 +53,8 @@ const Navbar = () => {
                 {user ? (
                     <div className={classes.profile}>
                         <Avatar
+                            component={Link}
+                            to={`/user/${user?.result?._id}`}
                             className={classes.purple}
                             alt={user?.result.name}
                             src={user?.result.picture}

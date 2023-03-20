@@ -27,6 +27,20 @@ export default makeStyles((theme) => ({
     width: '100%',
     height: '100%',
   },
+  editIcon: {
+    width: '40px',
+    height: '40px',
+    position: 'absolute',
+    right: '5px',
+    top: '5px',
+    borderRadius: '50%',
+    backgroundColor: 'white',
+    color: 'rgba(0, 0, 0, 1)',
+    display: "flex",
+    justifyContent: 'center',
+    alignItems: 'center',
+
+  },
   avatarContainer: {
     width: '110px',
     height: '110px',
@@ -44,6 +58,19 @@ export default makeStyles((theme) => ({
   avatar: {
     width: "100px",
     height: "100px",
+  },
+  editAvatar: {
+    position: 'absolute', 
+    bottom: '0', 
+    right: '5px', 
+    width: '30px', 
+    height: '30px', 
+    backgroundColor: 'white',
+    color: 'black',
+    borderRadius: '50%',
+    display: "flex",
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   buttonContainer: {
     display: "flex",

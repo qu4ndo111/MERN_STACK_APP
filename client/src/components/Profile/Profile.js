@@ -27,7 +27,16 @@ const Profile = () => {
                                     <Avatar className={classes.avatar} sizes="150px" />
                                 </div>
                             </div>
+                            <Typography variant='h3' align='center' style={{ margin: '10px 0' }}>Name</Typography>
                         </AppBar>
+                        <div className={classes.buttonContainer}>
+                            <Button variant='contained'>
+                                Liked Posts
+                            </Button>
+                            <Button variant='contained'>
+                                Uploaded Posts
+                            </Button>
+                        </div>
                     </Grid>
                 </Grid>
             </Container>

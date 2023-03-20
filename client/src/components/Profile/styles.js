@@ -6,6 +6,7 @@ export default makeStyles((theme) => ({
     marginBottom: '1rem',
     display: 'flex',
     padding: '16px',
+    paddingBottom: '0',
   },
   pagination: {
     borderRadius: 4,
@@ -43,5 +44,9 @@ export default makeStyles((theme) => ({
   avatar: {
     width: "100px",
     height: "100px",
+  },
+  buttonContainer: {
+    display: "flex",
+    justifyContent: 'space-around',
   },
 }));

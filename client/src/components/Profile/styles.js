@@ -39,7 +39,7 @@ export default makeStyles((theme) => ({
     display: "flex",
     justifyContent: 'center',
     alignItems: 'center',
-
+    cursor: 'pointer',
   },
   avatarContainer: {
     width: '110px',
@@ -71,6 +71,7 @@ export default makeStyles((theme) => ({
     display: "flex",
     justifyContent: 'center',
     alignItems: 'center',
+    cursor: 'pointer',
   },
   buttonContainer: {
     display: "flex",

@@ -76,5 +76,6 @@ export default makeStyles((theme) => ({
   buttonContainer: {
     display: "flex",
     justifyContent: 'space-around',
+    gap: '15px',
   },
 }));

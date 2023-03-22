@@ -78,4 +78,8 @@ export default makeStyles((theme) => ({
     justifyContent: 'space-around',
     gap: '15px',
   },
+  submitButton: {
+    position: 'absolute',
+    top: '0',
+  },
 }));

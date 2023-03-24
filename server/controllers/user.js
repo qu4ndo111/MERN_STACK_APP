@@ -42,3 +42,17 @@ export const signup = async (req, res) => {
         res.status(400).json({ message: "Something went wrong." });
     }
 };
+
+export const profile = async (req, res) => {
+    const { userId } = req.params;
+
+    try {
+        const profile = await user.findById(userId);
+
+        if(!profile) return res.status(404).json({ message: "User not found." });
+
+        res.status(200).json({ name: profile?.name, _id: profile?._id });
+    } catch (error) {
+        console.log(error);
+    }
+}

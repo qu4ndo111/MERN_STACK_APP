@@ -1,8 +1,8 @@
-import { AUTH } from '../constants/actionTypes';
+import { AUTH, USER } from '../constants/actionTypes';
 import * as api from '../api';
 
 
-export const signin = ( formData, history ) => async (dispatch) => {
+export const signin = (formData, history) => async (dispatch) => {
     try {
         const { data } = await api.signIn(formData);
 
@@ -14,7 +14,7 @@ export const signin = ( formData, history ) => async (dispatch) => {
     }
 };
 
-export const signup = ( formData, history ) => async (dispatch) => {
+export const signup = (formData, history) => async (dispatch) => {
     try {
         const { data } = await api.signUp(formData);
 
@@ -23,4 +23,15 @@ export const signup = ( formData, history ) => async (dispatch) => {
     } catch (error) {
         console.log(error);
     }
-}
+};
+
+export const profile = (userId) => async (dispatch) => {
+    try {
+        const { data } = await api.profile(userId);
+        
+        dispatch({ type: USER, data });
+    } catch (error) {
+        console.log(error);
+    }
+};
+

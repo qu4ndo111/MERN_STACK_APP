@@ -27,7 +27,6 @@ const Home = () => {
     const searchQuery = query.get('searchQuery');
 
 
-
     const handleAdd = (tag) => setTags((prev) => [...prev, tag])
 
     const handleDelete = (tagToDelete) => setTags(tags.filter(tag => tagToDelete !== tag));

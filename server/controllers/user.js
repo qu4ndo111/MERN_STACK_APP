@@ -51,7 +51,7 @@ export const profile = async (req, res) => {
 
         if(!profile) return res.status(404).json({ message: "User not found." });
 
-        res.status(200).json({ name: profile?.name, _id: profile?._id });
+        res.status(200).json({ name: profile?.name, id: profile?._id });
     } catch (error) {
         console.log(error);
     }

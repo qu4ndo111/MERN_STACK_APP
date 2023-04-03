@@ -7,7 +7,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import useStyle from './styles'
 import Posts from '../Posts/Posts';
-import { profile } from '../../actions/auth'
+import { profile, changeAvatar } from '../../actions/auth'
 
 const Profile = () => {
     const userId = useParams();
@@ -49,22 +49,32 @@ const Profile = () => {
         e.persist()
 
         getBase64(e.target.files[0])
-        .then((data) => {
-            setAvatar({file: e.target.files[0], baseURL: data})
-        })
+            .then((data) => {
+                setAvatar({ file: e.target.files[0], baseURL: data })
+            })
+        setSaveImage(true);
     }
 
     const handleChangeCoverImage = (e) => {
         e.persist()
 
         getBase64(e.target.files[0])
-        .then((data) => {
-            setCoverImage({file: e.target.files[0], baseURL: data})
-        })
+            .then((data) => {
+                setCoverImage({ file: e.target.files[0], baseURL: data })
+            })
+        setSaveImage(true);
     }
 
     const handleSubmit = (e) => {
         e.preventDefault();
+        if (avatar.baseURL || coverImage.baseURL) {
+            const userData = {
+                avatar: avatar.baseURL ? avatar.baseURL : userProfile?.avatar,
+                coverImage: coverImage.baseURL ? coverImage.baseURL : userProfile?.coverImage,
+            }
+            dispatch(changeAvatar(userData, currentUser?._id))
+        };
+        setSaveImage(false);
     }
 
     return (
@@ -80,7 +90,7 @@ const Profile = () => {
                             <form onSubmit={handleSubmit}>
                                 <div className={classes.profileContainer}>
                                     <img
-                                        src={coverImage?.file ? URL.createObjectURL(coverImage?.file) : 'https://cdn.donmai.us/sample/7a/56/__shirakami_fubuki_sukonbu_fubuzilla_and_fubuchun_hololive_drawn_by_karohroka__sample-7a56b7287c3a4f5f3d6915fe3a034e70.jpg'}
+                                        src={coverImage?.file ? URL.createObjectURL(coverImage?.file) : userProfile?.coverImage}
                                         className={classes.profileImage}
                                         alt={"Cover"}
                                     />
@@ -88,12 +98,12 @@ const Profile = () => {
                                         currentUser?._id === userProfile?.id && (
                                             <label htmlFor='background-upload' className={classes.editIcon}>
                                                 <input
-                                                        type='file'
-                                                        id='background-upload'
-                                                        accept="image/*"
-                                                        onChange={handleChangeCoverImage}
-                                                        style={{ display: 'none' }}
-                                                    />
+                                                    type='file'
+                                                    id='background-upload'
+                                                    accept="image/*"
+                                                    onChange={handleChangeCoverImage}
+                                                    style={{ display: 'none' }}
+                                                />
                                                 <EditIcon />
                                             </label>
                                         )
@@ -103,7 +113,7 @@ const Profile = () => {
                                             className={classes.avatar}
                                             sizes="150px"
                                             alt={userProfile?.name}
-                                            src={avatar?.file && URL.createObjectURL(avatar?.file)}
+                                            src={avatar?.file ? URL.createObjectURL(avatar?.file) : userProfile?.avatar}
                                         />
                                         {
                                             currentUser?._id === userProfile?.id && (
@@ -129,7 +139,7 @@ const Profile = () => {
                                                     gap: '20px',
                                                     justifyContent: 'center',
                                                 }}>
-                                                    <Button variant='contained' type='button' color='secondary'>Cancel</Button>
+                                                    <Button variant='contained' type='button' color='secondary' onClick={() => setSaveImage(false)}>Cancel</Button>
                                                     <Button variant='contained' type='submit' color='primary'>Save</Button>
                                                 </div>
                                             </div>

@@ -25,7 +25,7 @@ export default makeStyles((theme) => ({
   },
   profileImage: {
     width: '100%',
-    height: '100%',
+    height: '250px',
   },
   editIcon: {
     width: '40px',
@@ -79,6 +79,7 @@ export default makeStyles((theme) => ({
     gap: '15px',
   },
   submitButton: {
+    width: '80%',
     position: 'absolute',
     top: '0',
   },

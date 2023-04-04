@@ -68,7 +68,6 @@ export const updateProfile = async (req, res) => {
 
     const updateProfile = await user.findByIdAndUpdate(userId, {
        ...update,
-        id: userId
     }, { new: true });
 
     res.json(updateProfile);

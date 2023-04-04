@@ -89,11 +89,21 @@ const Profile = () => {
                         <AppBar className={classes.appBarSearch} position='static' color='inherit'>
                             <form onSubmit={handleSubmit}>
                                 <div className={classes.profileContainer}>
-                                    <img
-                                        src={coverImage?.file ? URL.createObjectURL(coverImage?.file) : userProfile?.coverImage}
-                                        className={classes.profileImage}
-                                        alt={"Cover"}
-                                    />
+                                    {
+                                        coverImage?.file || userProfile?.coverImage ? (
+                                            <img
+                                                src={coverImage?.file ? URL.createObjectURL(coverImage?.file) : userProfile?.coverImage}
+                                                className={classes.profileImage}
+                                                alt={"Cover"}
+                                            />
+                                        ) : (
+                                            <img
+                                                src={"https://wallpapercrafter.com/desktop1/657758-anime-girls-Milfaaaaa-Hololive-Virtual-Youtuber.jpg"}
+                                                className={classes.profileImage}
+                                                alt={"Cover"}
+                                            />
+                                        )
+                                    }
                                     {
                                         currentUser?._id === userProfile?.id && (
                                             <label htmlFor='background-upload' className={classes.editIcon}>

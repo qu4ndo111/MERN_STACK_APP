@@ -20,12 +20,11 @@ export default makeStyles((theme) => ({
   },
   profileContainer: {
     width: '100%',
-    minHeight: "180px",
     position: 'relative',
   },
   profileImage: {
     width: '100%',
-    height: '250px',
+    maxHeight: '250px',
   },
   editIcon: {
     width: '40px',

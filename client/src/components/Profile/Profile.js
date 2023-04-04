@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
-import { Typography, Avatar, Grid, Grow, AppBar, Button, Container, Paper } from '@material-ui/core';
+import { Typography, Avatar, Grid, Grow, AppBar, Button, Container } from '@material-ui/core';
 import CameraAltIcon from '@material-ui/icons/CameraAlt';
 import EditIcon from '@material-ui/icons/Edit';
 import { useDispatch, useSelector } from 'react-redux';
